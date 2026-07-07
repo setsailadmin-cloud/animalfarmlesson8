@@ -220,7 +220,7 @@
         num: 9,
         category: 'trials',
         question: 'Why would the four pigs confess to having dealings with Snowball?',
-        answer: 'The pigs may be telling the truth about opposing Napoleon, but details of Snowball being a "secret agent for years" make their specific claims ring false. It is more likely they confessed to what they believed Napoleon wanted to hear, perhaps under the psychological suggestion of torture. Since there had been no previous executions on the farm, they probably did not fear death and believed they would merely be punished or pardoned.',
+        answer: 'The pigs may be telling the truth about opposing Napoleon, but details of Snowball being a "secret agent for years" make their statements ring false. It is more likely that the pigs have been opposed to Napoleon\'s rule for a long while. Confessing to something then leads to them confessing many different things they believe Napoleon wants to hear. Since there have been no previous executions on the farm, they probably do not fear death and believe they would merely be punished.',
         tutorTip: 'This directly mirrors the Moscow Show Trials, where defendants confessed to preposterous charges of treason/espionage because of torture and false promises of safety.'
       },
       {
@@ -228,7 +228,7 @@
         num: 10,
         category: 'trials',
         question: 'What is your opinion of the confessions of the animals?',
-        answer: 'Answers will vary, but should deal with the power of suggestion and coercion outweighing truth. Animals confess to all types of absurd crimes, most of which were inspired by the state\'s manufactured paranoia about Snowball.',
+        answer: 'Answers will vary, but should deal with the power of suggestion outweighing truth. Animals confess to all types of crimes, most of which were inspired by Snowball.',
         tutorTip: 'Ask students: How does a climate of terror and suggestion break down an individual\'s sanity to the point of public, suicidal confessions?'
       },
       {
@@ -244,7 +244,7 @@
         num: 12,
         category: 'trials',
         question: 'As the animals look down on the farm, what are Clover’s thoughts?',
-        answer: 'Although she would work hard and accept Napoleon’s leadership, this society was not the one the animals had hoped and worked for in the early days of the rebellion. She remembers a dream of equality and freedom, which has been replaced by fear, whips, and execution blocks.',
+        answer: 'Although she would work hard and accept Napoleon’s leadership, this society was not the one the animals had hoped and worked for. In essence, they exist only for the state.',
         tutorTip: 'Analyze Clover\'s silent thoughts. She represents the tragic sorrow of the working class realizing their revolution has been hijacked, yet lacking the language/theory to articulate a rebellion.'
       },
       {
@@ -257,30 +257,18 @@
       }
     ];
 
-    // Chapter 8 Vocabulary Preview (EXCLUSIVELY DIRECTED FROM image_9188c8.png)
+    // Chapter 8 Vocabulary Preview (STREAMLINED TO 12 MOST CORE WORDS FROM image_9188c8.png)
     const vocabularyCh8 = [
-      { word: 'Beatifically', definition: 'With complete happiness.' },
       { word: 'Censured', definition: 'Publicly blamed or condemned.' },
-      { word: 'Clamoured', definition: 'Made loud noises.' },
       { word: 'Conciliatory', definition: 'In a friendly manner.' },
-      { word: 'Contemplated', definition: 'Thought.' },
       { word: 'Contrived', definition: 'Made up.' },
       { word: 'Dejectedly', definition: 'Sadly.' },
-      { word: 'Flank', definition: 'The side.' },
-      { word: 'Forsook', definition: 'Gave up.' },
       { word: 'Hullabaloo', definition: 'A disturbance.' },
-      { word: 'Impart', definition: 'To give to.' },
       { word: 'Impending', definition: 'About to happen.' },
       { word: 'Lamentation', definition: 'Sorrow.' },
       { word: 'Machinations', definition: 'Acts of scheming or plotting.' },
-      { word: 'Magistrates', definition: 'Legal officials.' },
-      { word: 'Nocturnal', definition: 'At night.' },
-      { word: 'Pensioner', definition: 'Someone receiving money from the government.' },
-      { word: 'Privy', definition: 'Party to.' },
       { word: 'Retinue', definition: 'A group that serves and accompanies.' },
-      { word: 'Sallied', definition: 'Ran out to meet.' },
       { word: 'Skulking', definition: 'Concealing.' },
-      { word: 'Surmounted', definition: 'On the top of.' },
       { word: 'Unscathed', definition: 'Unharmed.' },
       { word: 'Wistful', definition: 'Wishful.' }
     ];
@@ -292,7 +280,7 @@
         activeTab: 'homework', // Start with Chapter 6 homework evaluation
         viewedHomework: [],
         viewedCh6Vocab: [], // Chapter 6 Homework Vocabulary Checklist
-        viewedCh8Vocab: [], // Chapter 8 Preview Checklist (24 terms)
+        viewedCh8Vocab: [], // Chapter 8 Preview Checklist (12 terms)
         exploredQuestions: [], // Tracks student progression in Chapter 7 discussion quest
         homeworkFeedback: {},
         isGeneratingFeedback: false,
@@ -341,6 +329,12 @@
         toggleHomeworkLog(id) {
           if (!this.viewedHomework.includes(id)) {
             this.viewedHomework.push(id);
+          }
+        },
+
+        toggleCh6Vocab(word) {
+          if (!this.viewedCh6Vocab.includes(word)) {
+            this.viewedCh6Vocab.push(word);
           }
         },
 
@@ -423,7 +417,7 @@
           }
 
           return this.isDarkMode 
-            ? 'bg-zinc-950/40 border-zinc-800 text-zinc-300 hover:bg-zinc-800/40' 
+            ? 'bg-zinc-955/40 border-zinc-800 text-zinc-300 hover:bg-zinc-800/40' 
             : 'bg-stone-50 border-stone-200 text-stone-700 hover:bg-stone-100';
         },
 
@@ -436,7 +430,7 @@
 
           if (this.tutorMode) score += 0.5;
 
-          if (this.viewedCh8Vocab.length >= 6) score += 2;
+          if (this.viewedCh8Vocab.length >= 4) score += 2;
           else if (this.viewedCh8Vocab.length > 0) score += 1;
 
           if (this.homeworkAnswers.q1.trim().length > 25) score += 1.5;
@@ -461,7 +455,7 @@
                 ? "💡 Spot on! You accurately described Napoleon's timber-trade game between Frederick and Pilkington. This parodies the **Molotov-Ribbentrop Pact of 1939**, where Stalin signed a non-aggression agreement with Nazi Germany (Frederick) only to be immediately betrayed by Hitler's invasion (Battle of the Windmill)."
                 : "⚠️ Expand your draft. Make sure to specify Frederick's counterfeit money plot and how his betrayal of trust directly represents Operation Barbarossa (the German invasion of the USSR).",
               status: "Draft Approved",
-              tip: "Incorporate Chapter 8 vocab terms like 'Censured', 'Machinations', or 'Conciliatory' to show active synthesis!"
+              tip: "Incorporate Chapter 8 vocab terms like 'Censured', 'Machinations', or 'Conciliatory' to demonstrate active synthesis!"
             };
           }, 1200);
         },
@@ -545,7 +539,7 @@ Generated on: ${new Date().toLocaleDateString()}
         </div>
 
         <div class="flex items-center space-x-4">
-          <!-- Progress Indicator -->
+          <!-- Dynamic Progress Indicator -->
           <div class="hidden sm:flex items-center space-x-2 text-xs">
             <span class="font-semibold text-stone-500 dark:text-zinc-400">Lesson Prep Progress:</span>
             <div class="w-24 bg-stone-200 dark:bg-zinc-800 rounded-full h-2.5 overflow-hidden">
@@ -564,6 +558,7 @@ Generated on: ${new Date().toLocaleDateString()}
             title="Toggle Theme"
             aria-label="Toggle dark mode"
           >
+            <!-- Sun icon when dark, Moon when light -->
             <template x-if="isDarkMode">
               <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
@@ -613,7 +608,7 @@ Generated on: ${new Date().toLocaleDateString()}
           <div class="flex flex-col gap-2">
             <button 
               @click="tutorMode = !tutorMode"
-              :class="tutorMode ? 'bg-amber-500 text-stone-950' : 'bg-emerald-800 hover:bg-emerald-700 text-white'"
+              :class="tutorMode ? 'bg-amber-500 text-stone-955' : 'bg-emerald-800 hover:bg-emerald-700 text-white'"
               class="w-full text-center py-2 px-3 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1 cursor-pointer"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -797,7 +792,7 @@ Generated on: ${new Date().toLocaleDateString()}
           <template x-for="q in homeworkReviewQuestions" :key="q.id">
             <div class="p-6 rounded-3xl border bg-white border-stone-200 dark:bg-zinc-900 dark:border-zinc-800 shadow-sm hover:shadow-md transition-all">
               <div class="flex items-center justify-between mb-4 border-b border-stone-100 dark:border-zinc-800 pb-3">
-                <h4 class="font-extrabold text-sm sm:text-base text-stone-855 dark:text-zinc-105" x-text="q.title"></h4>
+                <h4 class="font-extrabold text-sm sm:text-base text-stone-855 dark:text-zinc-100" x-text="q.title"></h4>
                 <span class="text-[10px] uppercase font-bold text-amber-500 tracking-wider">Chapter 6 Responses</span>
               </div>
 
@@ -808,7 +803,7 @@ Generated on: ${new Date().toLocaleDateString()}
 
                 <div class="space-y-1.5">
                   <span class="text-[10px] font-black uppercase text-emerald-600 dark:text-emerald-400 block tracking-wider">Standard Model Answer</span>
-                  <p class="p-4 rounded-xl bg-stone-50 border border-stone-200 text-xs sm:text-sm text-stone-600 dark:bg-zinc-955/40 dark:border-zinc-850 dark:text-zinc-300 leading-relaxed font-mono" x-text="q.modelAnswer"></p>
+                  <p class="p-4 rounded-xl bg-stone-50 border border-stone-200 text-xs sm:text-sm text-stone-655 dark:bg-zinc-955/40 dark:border-zinc-850 dark:text-zinc-300 leading-relaxed font-mono" x-text="q.modelAnswer"></p>
                 </div>
 
                 <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs leading-relaxed text-stone-500 dark:text-zinc-400">
@@ -1023,7 +1018,7 @@ Generated on: ${new Date().toLocaleDateString()}
         <div class="text-center max-w-2xl mx-auto space-y-2">
           <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Chapter 8 Preview Workspace</h2>
           <p class="text-sm text-stone-500 dark:text-zinc-400">
-            Analyze the upcoming events, commandment edits, and global treachery in Chapter 8. Master the 24 new vocabulary terms and draft your homework queries below.
+            Analyze the upcoming events, commandment edits, and global treachery in Chapter 8. Master the 12 key vocabulary terms and draft your homework queries below.
           </p>
         </div>
 
@@ -1044,7 +1039,7 @@ Generated on: ${new Date().toLocaleDateString()}
             </p>
 
             <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs text-stone-500 dark:text-zinc-400">
-              <strong class="text-amber-600 dark:text-amber-400 block mb-1">Historical Counterpart:</strong>
+              <strong class="text-amber-600 dark:text-amber-400 block mb-1">Key Historical Allegory:</strong>
               The timber trade and Frederick's violent invasion represents the **Molotov-Ribbentrop Pact (1939)** and Hitler's sudden, treacherous betrayal of the USSR via **Operation Barbarossa (1941)**.
             </div>
           </div>
@@ -1086,7 +1081,7 @@ Generated on: ${new Date().toLocaleDateString()}
                 <div class="my-auto py-4">
                   <template x-if="!isCardFlipped">
                     <div class="space-y-1">
-                      <h4 class="text-2xl font-black tracking-tight" x-text="vocabularyCh8[vocabIndex].word"></h4>
+                      <h4 class="text-3xl font-black tracking-tight" x-text="vocabularyCh8[vocabIndex].word"></h4>
                       <span class="block text-xs uppercase font-extrabold text-emerald-500 pt-1">Click to reveal definition</span>
                     </div>
                   </template>
